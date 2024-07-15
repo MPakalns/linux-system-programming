@@ -152,7 +152,6 @@ void sv_vapgriezt(char *virkne)
         
         indekss++;
     }
-
     
     if (vardaGarums > 0) 
     {
