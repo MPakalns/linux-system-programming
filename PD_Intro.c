@@ -122,30 +122,44 @@ void sv_apgriezt(char *virkne)
 
 void sv_vapgriezt(char *virkne)
 {
-    char buf[sv_garums(virkne)+1];
+    int garums = sv_garums(virkne);  
+    char buf[garums + 1];
     int vardaGarums = 0;
-    int indekss = (sv_garums(virkne));
-
-    while (*virkne != '\0')
+    int indekss = 0;
+    int atpakalIndekss = garums;
+    
+    for (int i = 0; i <= garums; i++) 
     {
-        if ((*(virkne+indekss) >= 65 && *(virkne+indekss) <= 90) || (*(virkne+indekss) >= 97 && *(virkne+indekss) <= 122))
+        buf[i] = '\0';
+    }
+
+    while (*(virkne + indekss) != '\0')
+    {
+        if ((*(virkne + indekss) >= 65 && *(virkne + indekss) <= 90) || (*(virkne + indekss) >= 97 && *(virkne + indekss) <= 122))
         {
             vardaGarums++;
         }
-
         else
         {
-            if (vardaGarums >= 0)
+            for (int i = 0; i < vardaGarums; i++)
             {
-                for (int i = 0; i < vardaGarums; i++)
-                {
-                    buf[sv_garums(virkne)-indekss+i] = *(virkne+indekss-(vardaGarums+i));
-                }
+                buf[atpakalIndekss - vardaGarums + i] = *(virkne + indekss - vardaGarums + i);
             }
+            atpakalIndekss -= (vardaGarums + 1);
+            buf[atpakalIndekss] = *(virkne + indekss);
             vardaGarums = 0;
         }
         
         indekss++;
+    }
+
+    
+    if (vardaGarums > 0) 
+    {
+        for (int i = 0; i < vardaGarums; i++) 
+        {
+            buf[atpakalIndekss - vardaGarums + i] = *(virkne + indekss - vardaGarums + i);
+        }
     }
 
     sv_kopet(buf, virkne);
