@@ -209,7 +209,6 @@ int main(void)
     sv_apgriezt(buferis);
     printf("%s%s\n","Atgriezts: ", buferis);
 
-    // Diemžēl kaut kas nesanāca :(
     printf("Tests uzdevumam PD1.5:\n");
     sv_kopet("es eju pa ielas kreiso pusi", buferis);
     sv_vapgriezt(buferis);
