@@ -4,4 +4,4 @@ My personal storage for my coursework - University of Latvia: Linux system progr
 
 ## Installation
 
-Compile and link the coursework files
+Compile the individual coursework files
